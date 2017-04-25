@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<package>
+  <name>robot_movement_control</name>
+  <version>1.0.0</version>
+  <description>Intel(r) RealSense(tm) Technology, Euclid sample</description>
+
+  <maintainer email="euclid.support@intel.com">Intel Euclid Support</maintainer>
+
+  <license>BSD 3-clause. See license attached</license>
+
+  <url type="website">http://www.intel.com/realsense</url>
+
+  <author email="amit.moran@intel.com">Amit Moran</author> -->
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>genmsg</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>nodelet</build_depend>
+  <build_depend>dynamic_reconfigure</build_depend>
+   
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>genmsg</run_depend> 
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>nodelet</run_depend>
+  <run_depend>dynamic_reconfigure</run_depend>
+
+  <export>
+  	<nodelet plugin="${prefix}/nodelet_plugins.xml" /> 
+  </export>
+</package>

@@ -1,0 +1,7 @@
+<library path="lib/librobot_move_ctrl_nodelet">
+  <class name="realsense_robot_control/RobotMovementControlNodelet" type="realsense_robot_control::RobotMovementControlNodelet" base_class_type="nodelet::Nodelet">
+  <description>
+  Intel(R) RealSense(TM) movement controller nodelet.
+  </description>
+  </class>
+</library>
