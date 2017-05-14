@@ -2,9 +2,9 @@
 
 This nodelet registered to a number of goals topics (where goal1 has the highest priority and goalN has the Nth priority), and send command velocity messages to direct the robot to that goal. The goal values are actually the sensor input of where the goal is with respect to the robot. Note - the goal needs to be sent every "frame", 30 FPS in order to reach a gaol. every frame the goal needs to be updated with the new goal values.
 
-http://www.intel.com/Euclid_XXX
+[Intel® Euclid™ Community Site](http://www.euclidcommunity.intel.com).
 
-http://wiki.ros.org/EuclidWiki_XXX
+[Intel® Euclid™ Support Forum](http://www.intel.com/content/www/us/en/support/emerging-technologies/intel-euclid-development-kit.html).
 
 ## Subscribed Topics
 
