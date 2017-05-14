@@ -1,6 +1,6 @@
 # Intel&reg; Euclid&trade; Robot movement controller sample.
 
-This nodelet register to pointcloud messages and publishes a goal for the robot movement control to handle. The algorithm is such that the robot should advance as long as it sees there is where to advance. if an obstacle is detected, the robot will find the direction in which it is most likely not to have obstacle, and will continue there. If the robot is too close to an obstacle, it will reverse. 
+This nodelet registered to a number of goals topics (where goal1 has the highest priority and goalN has the Nth priority), and send command velocity messages to direct the robot to that goal. The goal values are actually the sensor input of where the goal is with respect to the robot. Note - the goal needs to be sent every "frame", 30 FPS in order to reach a gaol. every frame the goal needs to be updated with the new goal values.
 
 http://www.intel.com/Euclid_XXX
 
@@ -8,34 +8,34 @@ http://wiki.ros.org/EuclidWiki_XXX
 
 ## Subscribed Topics
 
-    camera/depth/points (sensor_msgs/PointCloud2)
-        Registered XYZ point cloud.
+    goal1 (geometry_msgs::PointStamped)
+        X,Y,Z goal (priority 1)
+	goal2 (geometry_msgs::PointStamped)
+        X,Y,Z goal (priority 2)
 	
 ## Published Topics
 
 Point Cloud
 
-    depth_follower/goal (geometry_msgs::PointStamped)
-		X,Y,Z goal of where to follow
-	depth_follower/marker (visualization_msgs::Marker)
-		X,Y,Z for rviz visualization 
+    cmd_vel_mux/input/teleop (geometry_msgs::Twist)
+		Command velocity message for the robot
 
 ## Parameters
 
-    MinY(double, default: 0) 
-         The minimum y position of the points in the box
-    MaxY(double, default: 20000) 
-         The maximum y position of the points in the box
-    MinX(double, default: 0) 
-         The minimum x position of the points in the box
-    MaxX(double, default: 20000) 
-         The maximum x position of the points in the box
-	MinZ(double, default: 0) 
-         The minimum z position of the points in the box
-    MaxZ(double, default: 20000) 
-         The maximum z position of the points in the box		
-	MinBlobSize(int, default: 4000)
-		Minimum number of points to consider as a blob
+    MaxRobotSpeed(double, default: 1) 
+         Maximum speed (forward and reverse) in m/s
+    GoalZ(double, default: 0.6) 
+         The distance away from the robot which we want to keep the constant distance from
+    GoalX(double, default: 0) 
+         The distance in the horizontal axis which we want to keep the constant distance from
+    ScaleZ(double, default: 1) 
+         The scaling factor for translational robot speed
+	ScaleX(double, default: 5) 
+         The scaling factor for rotational robot speed
+    DamperDivisor(double, default: 30) 
+         Linear Speed Damping factor. higher means slower change in linear speed.
+	GoalInterval(float, default: 0.1)
+		minimum threshold in which the robot will stop moving if reached that distance from the goal
 	Enabled(bool, default: true)
 		Enable flag for the algorithm
 		
